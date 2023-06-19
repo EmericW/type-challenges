@@ -149,6 +149,8 @@ async function generatePlayground() {
     const { difficulty, title } = resolveInfo(quiz, locale) as QuizMetaInfo & { difficulty: string }
     const code = formatToCode(quiz, locale)
 
+    if (!difficulty || !title) continue;
+
     const quizesPathByDifficulty = path.join(playgroundPath, difficulty)
 
     const quizFileName = `${getQuestionFullName(quiz.no, difficulty, title)}.ts`
